@@ -3,10 +3,17 @@
 THIS_DATE="`date +%B-%Y-%H:%M`"
 
 MY_STRING="`date | md5sum | awk '{print $1}'`"
-REPO_DIR="/u01/autopush"
+REPO_DIR="/u01"
+REPO_NAME="autopush"
+REPO_URL="https://github.com/barticus67/autopush.git"
 TARGET_FILE="file"
 
-cat << EOF > ${REPO_DIR}/${TARGET_FILE}
+rm -rf ${REPO_DIR}/${REPO_NAME}
+cd ${REPO_DIR}
+
+git clone ${REPO_URL}
+
+cat << EOF > ${REPO_DIR}/${REPO_NAME}/${TARGET_FILE}
 abc:${MY_STRING}::
 EOF
 
