@@ -14,7 +14,7 @@ cd ${REPO_DIR}
 git clone ${REPO_URL}
 
 cat << EOF > ${REPO_DIR}/${REPO_NAME}/${TARGET_FILE}
-abc:${MY_STRING}::
+abc:${MY_STRING}:${THIS_DATE}:
 EOF
 
 cd ${REPO_DIR}/${REPO_NAME}
