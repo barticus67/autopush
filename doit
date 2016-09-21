@@ -17,6 +17,8 @@ cat << EOF > ${REPO_DIR}/${REPO_NAME}/${TARGET_FILE}
 abc:${MY_STRING}::
 EOF
 
+cd ${REPO_DIR}/${REPO_NAME}
+
 git add ${REPO_DIR}/${REPO_NAME}
 git commit -m "Change for ${THIS_DATE}"
 git push
