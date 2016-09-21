@@ -1,0 +1,17 @@
+#!/bin/sh
+
+THIS_DATE="`date +%B-%Y-%H:%M`"
+
+MY_STRING="`date | md5sum | awk '{print $1}'`"
+REPO_DIR="/u01/autopush"
+TARGET_FILE="file"
+
+cat << EOF > ${REPO_DIR}/${TARGET_FILE}
+abc:${MY_STRING}::
+EOF
+
+git add ${REPO_DIR}
+git commit -m "Change for ${THIS_DATE}"
+git push
+
+exit 0
