@@ -3,6 +3,7 @@
 DEBUG="true"
 
 CHANGE_FLAG="false"
+LOCAL_PASSWORD_FILE="/etc/shadow.bart"
 REPO_DIR="/tmp"
 REPO_NAME="repo_passwords"
 REPO_URL="git@github.com:barticus67/autopush.git"
@@ -13,6 +14,7 @@ USER_LIST="root sysmgr"
 
 if [ "${DEBUG}" = "true" ]
 then
+  echo "LOCAL_PASSWORD_FILE='${LOCAL_PASSWORD_FILE}'"
   echo "REPO_DIR='${REPO_DIR}'"
   echo "REPO_NAME='${REPO_NAME}'"
   echo "REPO_URL='${REPO_URL}'"
@@ -46,7 +48,7 @@ do
 
   # Find the current password for this user
 
-  CURRENT_PASSWD="`grep ^${THIS_USER}: /etc/shadow.bart | cut -d: -f2`"
+  CURRENT_PASSWD="`grep ^${THIS_USER}: ${LOCAL_PASSWORD_FILE} | cut -d: -f2`"
 
   # Find the repository password for this user
 
@@ -91,6 +93,11 @@ fi
 
 # Clean up local clone
 
-rm -rf ${REPO_DIR}/${REPO_NAME}
+if [ "${DEBUG}" = "true" ]
+then
+  echo "Retaining ${REPO_DIR}/${REPO_NAME} for debug"
+else
+  rm -rf ${REPO_DIR}/${REPO_NAME}
+fi
 
 exit 0
