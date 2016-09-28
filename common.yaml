@@ -1,5 +1,5 @@
 ---
-profile::root: 'something'
-profile::sysmgr: 'something'
+profile::root:$1$a.KKKkjalksajdaslSJDHKDHoE/zuH1 'something'
+profile::sysmgr:$1$aKJHKJHDSJKHDKASlSJDHKDHoE/zuH1 'something'
 
 other::data: 123
