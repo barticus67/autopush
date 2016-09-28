@@ -1,0 +1,5 @@
+---
+profile::root: 'something'
+profile::sysmgr: 'something'
+
+other::data: 123
